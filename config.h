@@ -5,18 +5,19 @@ static const unsigned int borderpx = 1; /* border pixel of windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
-static const char *fonts[] = {"Iosevka Nerd Font Mono:size=10", "Noto Color Emoji:size=10"};
+static const char *fonts[] = {"Lilex Nerd Font Mono:size=9",
+                              "Noto Color Emoji:size=10"};
 
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
-static const char col_gray3[] = "#bbbbbb";
-static const char col_gray4[] = "#eeeeee";
-static const char col_cyan[] = "#005577";
+static const char col_gray3[] = "#c5c9c5";
+static const char col_gray4[] = "#d5cea3";
+static const char col_sel_text[] = "#ffffff";
 
-static const char col_bg[] = "#2b3339";
-static const char col_secondary_bg[] = "#3a454a";
+static const char col_bg[] = "#222222";
+static const char col_secondary_bg[] = "#181616";
 
-static const char col_sel[] = "#a7c080";
+static const char col_sel[] = "#393836";
 
 static const char *colors[][3] = {
     /*               fg         bg         border   */
@@ -24,7 +25,7 @@ static const char *colors[][3] = {
     [SchemeSel] = {col_gray4, col_sel, col_sel},
     [SchemeLayout] = {col_gray4, col_secondary_bg, col_secondary_bg},
     [SchemeTagsNorm] = {col_gray3, col_secondary_bg, col_secondary_bg},
-    [SchemeTagsSel] = {col_gray3, col_sel, col_sel},
+    [SchemeTagsSel] = {col_sel_text, col_sel, col_sel},
     [SchemeInfoNorm] = {col_gray3, col_bg, col_bg},
     [SchemeInfoSel] = {col_gray4, col_bg, col_bg}};
 
@@ -70,8 +71,13 @@ static const char *nvimcmd[] = {"xst",    "-t",
                                 "neovim", "/home/pur0/.local/bin/nvim_patch.sh",
                                 NULL};
 
-static const char *ncmpcppcmd[] = {"xst", "-t", "ncmpcpp", "ncmpcpp-ueberzug",
-                                   NULL};
+static const char *ncmpcppcmd[] = {
+    "xst", "-i", "-g", "76x14", "-c", "ncmpcpp", "ncmpcpp-ueberzug", NULL};
+
+static const char *dmenucmd[] = {
+    "dmenu_run", "-b",        "-nb", "'#8fbcbb'",
+    "-nf",       "'#000000'", "-fn", "'Iosevka Nerd Font-12'",
+    NULL};
 
 // TODO
 // static const char *roficmd[] = {};
@@ -83,6 +89,7 @@ static const Key keys[] = {
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_n, spawn, {.v = nvimcmd}},
     {MODKEY | ShiftMask, XK_m, spawn, {.v = ncmpcppcmd}},
+    {MODKEY | ShiftMask, XK_d, spawn, {.v = dmenucmd}},
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
@@ -120,7 +127,7 @@ static const Button buttons[] = {
     {ClkStatusText, 0, Button2, spawn, {.v = termcmd}},
     {ClkClientWin, MODKEY, Button1, movemouse, {0}},
     {ClkClientWin, MODKEY, Button2, togglefloating, {0}},
-    {ClkClientWin, MODKEY, Button3, resizemouse, {0}},
+    {ClkClientWin, MODKEY | ShiftMask, Button1, resizemouse, {0}},
     {ClkTagBar, 0, Button1, view, {0}},
     {ClkTagBar, 0, Button3, toggleview, {0}},
     {ClkTagBar, MODKEY, Button1, tag, {0}},
