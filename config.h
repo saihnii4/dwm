@@ -12,7 +12,7 @@ static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#c5c9c5";
 static const char col_gray4[] = "#d5cea3";
-static const char col_sel_text[] = "#ffffff";
+static const char col_sel_text[] = "#d5cea3";
 
 static const char col_bg[] = "#222222";
 static const char col_secondary_bg[] = "#181616";
@@ -97,7 +97,7 @@ static const Key keys[] = {
     {MODKEY, XK_d, incnmaster, {.i = -1}},
     {MODKEY, XK_h, setmfact, {.f = -0.05}},
     {MODKEY, XK_l, setmfact, {.f = +0.05}},
-    {MODKEY, XK_Return, zoom, {0}},
+    {MODKEY, XK_z, zoom, {0}},
     {MODKEY, XK_Tab, view, {0}},
     {MODKEY | ShiftMask, XK_c, killclient, {0}},
     {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
