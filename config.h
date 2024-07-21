@@ -86,7 +86,7 @@ static const char *termcmd[] = {"xst", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
-    {MODKEY, XK_Return, spawn, {.v = termcmd}},
+    {MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_n, spawn, {.v = nvimcmd}},
 <<<<<<< HEAD
     {MODKEY | ShiftMask, XK_d, spawn, {.v = dmenucmd}},
